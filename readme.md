@@ -57,3 +57,4 @@ This work is licensed under a
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 ###### This project is co-financed by the European Regional Development Fund through the Urban Innovative Actions Initiative
+![alt text](https://github.com/movilidadparafamilias/ChildfyPlatform/blob/main/1.png?raw=true) ![alt text](https://github.com/movilidadparafamilias/ChildfyPlatform/blob/main/2.png?raw=true)  ![alt text](https://github.com/movilidadparafamilias/ChildfyPlatform/blob/main/3.png?raw=true)  
