@@ -1,0 +1,30 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>passResetRequest</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content class="cBg">
+
+  <div class="loginTitle">{{'Reset Password' | translate}}</div>
+  <div class="subTitle"> {{'Input the code you have received by email and the new password'|translate}}</div>
+  <ion-input [(ngModel)]="pcode" placeholder="{{'Code' | translate}}" class="loginField"></ion-input>
+  <ion-input type="password" [(ngModel)]="password"  placeholder="{{'New Password' | translate}}" class="loginField"></ion-input>
+  <ion-input type="password" [(ngModel)]="rpassword"  placeholder="{{'Repeat Password' | translate}}" class="loginField"></ion-input>
+  <div class="link1">
+  
+
+  <!-- <a [routerLink]="['/signup']">{{'Reset Password' | translate}}</a> -->
+ 
+  </div>
+    <ion-button expand="block" class="loginButton" (click)="saveReset()">{{'Save' | translate}}</ion-button>
+    <div class="link1">
+  
+    <a [routerLink]="['/login']">{{'Login' | translate}}</a>
+   
+    </div>
+
+
+</ion-content>
+

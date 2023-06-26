@@ -1,0 +1,72 @@
+.butKey{
+    text-align: center;
+}
+.keypad{
+
+height: 60px;
+    width: 60px;
+    font-size: 25px;
+}
+
+.pinRow{
+
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pinNo{
+    margin: 5px;
+    color: #ffffff;
+}
+
+.cDisplay{
+    color: #fff;
+    font-size: 40px;
+    border-bottom: solid;
+    max-width: 60%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    height: 50px;
+}
+
+.infoTextTitle{
+    color: white;
+    font-size:24px;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 10px;
+   
+    text-align: center;
+}
+
+.infoText{
+    color: white;
+    font-size:18px ;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-left: 6px;
+
+}
+ 
+.errorDisplay{
+    color: #FF907A;
+    font-size:12px ;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-left: 6px;
+
+}
+
+.resendBut{
+    color: white;
+    font-size:18px ;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-left: 6px;
+
+}

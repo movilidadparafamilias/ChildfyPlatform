@@ -1,0 +1,26 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="cBg">
+
+  <div class="loginTitle">{{'Login to your account' | translate}}</div>
+  <ion-input [(ngModel)]="loginData.email" placeholder="{{'Email' | translate}}" class="loginField"></ion-input>
+  <ion-input type="password" [(ngModel)]="loginData.password"  placeholder="{{'Password' | translate}}" class="loginField"></ion-input>
+  <div class="link1">
+  
+
+  <a [routerLink]="['/pass-reset-request']">{{'Reset Password' | translate}}</a>
+ 
+  </div>
+    <ion-button expand="block" class="loginButton" (click)="login()">{{'LOG IN' | translate}}</ion-button>
+    <div class="link1">
+  
+    <a [routerLink]="['/signup']">{{'Join Childfy' | translate}}</a>
+   
+    </div>
+
+
+</ion-content>

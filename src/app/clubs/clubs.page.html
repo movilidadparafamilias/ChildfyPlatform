@@ -1,0 +1,22 @@
+<ion-header mode="md" class="ion-no-border ">
+ 
+  <ion-toolbar  class="cBg2">
+    <ion-title><span  class="userName">{{'Clubs'| translate}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="cBg2">
+  <div *ngIf="clubsList.length==0" class="emptyText">{{'No centers added yet' | translate}}</div>
+  <ion-list class="myList cBg2" >
+    <ion-item *ngFor="let c of clubsList" class="clubCard" detail="true" [routerLink]="['/club-details', c]">
+      <ion-thumbnail slot="start" class="clubImg">
+        <ion-img *ngIf="c.get('image')" [src]="c.get('image').url()"></ion-img>
+        <ion-img *ngIf="!c.get('image')" [src]="displayService.getHeaderImageForType(c.get('type'))"></ion-img>
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap"><h2>{{c.get("name")}}</h2>
+     <h3> {{c.get("category")}}</h3>
+      <p> {{c.get("address")}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

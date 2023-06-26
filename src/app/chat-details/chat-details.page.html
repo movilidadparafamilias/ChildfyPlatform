@@ -1,0 +1,97 @@
+<ion-header mode="md" class="ion-no-border ">
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title  class="ion-text-wrap"><span *ngIf="convers"  class="userName ion-text-wrap">{{'Chat with' | translate}} {{getTheOther(convers)}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content class="cBg2">
+  <!-- <chat-bubble></chat-bubble> --> 
+  <ion-grid>
+    <ion-row *ngFor="let m of messagesList" >
+      <ion-col  size="8" style="background-color:transparent"  offset="4" pull="{{getSide(m)}}" *ngIf="!(convers.get('status') == 2 && IamDriver() && !convers.get('signature') && m.get('type')=='aproveCard')">
+       
+      <div class="textMessage1" *ngIf="m.get('type')=='text'" [ngClass]="{'MoveRight' : getSide(m) == 0}">{{m.get('content')}} </div>
+
+      <div class="textMessage" *ngIf="m.get('type')=='requestCard'" [ngClass]="{'MoveRight' : getSide(m) == 0}">
+        <div class="requestCard" *ngIf="IamDriver()">
+          <h2 style="font-size: 14px;">{{m.get('sender').get('name')}} {{'wants to join your trip to' | translate}} {{getDestination()}}</h2>
+          <h3 style="font-size: 14px;">{{'Needs' | translate}}: 1 {{'seat' | translate}}</h3>
+          <h3 style="font-size: 14px;">{{'Child seat' | translate}}: {{'No' | translate}}</h3>
+          <p>{{'Once you consider that you can accompany'| translate}}  {{m.get('sender').get('name')}}{{"'s child, press 'accept' to confirm the journey and make the seat reservation by signing the authorization. In the event that this family does not fit in your journey, press 'reject'." | translate}}
+        <div class=""  *ngIf="IamDriver() && convers.get('status') == 1"> <ion-row><ion-col><ion-button expand="block"  class="aprovingBut"  (click)="aproveUser(m)">{{'Aprove' | translate}}</ion-button></ion-col><ion-col><ion-button expand="block" class="refuseButton" (click)="rejectUser()">{{'Reject' | translate}}</ion-button></ion-col></ion-row></div> 
+        </div>
+        <div class="requestCard" *ngIf="!IamDriver()">
+          <h2 style="font-size: 14px;"> {{'You asked to join ' | translate}} {{getTheOther(convers)}} {{'on the trip to '| translate}}  {{getDestination()}}</h2>
+          <h3 style="font-size: 14px;">{{'Needs' | translate}}: 1 {{'seat' | translate}}</h3>
+          <h3 style="font-size: 14px;">{{'Child seat' | translate}}: {{'No' | translate}}</h3>
+        </div>
+             </div>
+
+      <div class="textMessage" *ngIf="m.get('type')=='aproveCard'" [ngClass]="{'MoveRight' : getSide(m) == 0}">
+        <div class="requestCard">
+          <div *ngIf="convers.get('status') == 2 && !IamDriver() && !convers.get('signature')">
+          <h2 style="font-size: 14px;">{{m.get('sender').get('name')}} {{' has accepted your request to share a ride to' | translate}} {{getDestination()}} {{'. Below you have the authorization that you must complete and sign to authorize '|translate}} {{m.get('sender').get('name')}} {{' as a companion for your child on this journey'|translate}}</h2>
+           
+          </div>
+          <div *ngIf="convers.get('status') == 2 && !IamDriver() && convers.get('signature')">
+            <h2 style="font-size: 14px;"> {{'You have signed the authorisation' | translate}} </h2>
+            <h3 style="font-size: 14px;">{{'Wait for ' | translate}} {{m.get('sender').get('name')}} {{' to sign the document ' | translate}}</h3>
+            </div>
+          <!-- <div *ngIf="convers.get('status') == 2 && IamDriver() && !convers.get('signature')">
+            <h2 style="font-size: 14px;"> {{'You have aproved '|translate}} {{getTheOther(convers)}} {{'request to join your trip to' | translate}} {{getDestination()}}</h2>
+            <h3 style="font-size: 14px;">{{'Wait for ' | translate}} {{getTheOther(convers)}} {{'to sign the authorization' | translate}} </h3>
+            </div> -->
+            <div *ngIf="convers.get('status') == 2 && IamDriver() && convers.get('signature')">
+              <h2 style="font-size: 14px;"> {{getTheOther(convers)}} {{' has signed the authorisation! Please sign the authorization form in order to formalize the trip.' | translate}} </h2>
+              </div>
+            <div *ngIf="convers.get('status') >= 3">
+              <h2 style="font-size: 14px;">  {{'Here you can see the authorization document signed by both families, Happy trip!' | translate}} </h2>
+              </div>
+          <ion-icon  name="document-text-outline"  class="docIcon"></ion-icon>
+        <div class="" *ngIf="convers.get('status') == 2 && !IamDriver() && !convers.get('signature')"> <ion-row><ion-col><ion-button  class="aprovingBut" expand="block"  (click)="signDoc(m)">{{'Sign' | translate}}</ion-button></ion-col></ion-row></div> 
+        <div class="" *ngIf="convers.get('status') == 2 && IamDriver() && convers.get('signature')  && convers.get('signature').length>0"> <ion-row><ion-col><ion-button  class="aprovingBut" expand="block"  (click)="signDoc(m)">{{'Sign' | translate}}</ion-button></ion-col></ion-row></div> 
+        <div class=""  *ngIf="convers.get('status') >= 3"> <ion-row><ion-col><ion-button  class="aprovingBut" expand="block" (click)="signDoc(m)">{{'View' | translate}}</ion-button></ion-col></ion-row></div>  
+        </div>
+      </div>
+     
+        <!-- <div class="textMessage" *ngIf="m.get('type')=='aproveCard'" [ngClass]="{'MoveRight' : getSide(m) == 0}">
+          <div class="requestCard">
+            <h2 style="font-size: 14px;">{{m.get('sender').get('name')}} {{'has aproved the request to join the trip to' | translate}} {{getDestination()}}</h2>
+          </div>
+        </div> -->
+
+          <div class="textMessage" *ngIf="m.get('type')=='rejectCard'" [ngClass]="{'MoveRight' : getSide(m) == 0}">
+            <div class="requestCard">
+              <h2 style="font-size: 14px;">{{m.get('sender').get('name')}} {{'has rejected the request to join the trip to' | translate}} {{getDestination()}}</h2>
+            </div>
+          </div>
+          <!-- <img src="/assets/userPlaceholder.png" style="object-fit: scale-down;max-width: 10px;margin-right: 2px;"> -->
+          <div class="sender" *ngIf="m.get('type')!='empty' && m.get('type')!='aproveCard'" [ngClass]="{'MoveRight2' : getSide(m) == 0}"> <b>{{m.get('sender').get('name')}}</b> {{'on'|translate}} {{m.get('createdAt') | date:'dd-MM-yyyy'}}</div>
+          
+      </ion-col>
+      
+      <ion-row *ngIf="m.get('type')=='requestCard'"> <div class="infoMess">{{'Please make use of this chat to get to know each other. You can discuss all the trip details in order to make a very pleasant experience for the kid that will be travelling with you. Please use an appropriate and respectful language.'|translate}}</div></ion-row>
+
+      <!-- <ion-row *ngIf="messagesList.length>0 && convers && !IamDriver() && convers.get('status') == 1"> <div class="infoMess">{{'Do you need a ride? While the family for this trip responds, take advantage of this chat to introduce yourself. Here you will be able to discuss all the details about the trip, meet the family that will accompany your child and inform them of specific needs that they may have. Please use an appropriate and respectful language. Below you have the authorization that you must complete and sign if this route is the ideal one for your child. Once accepted, the family that will accompany your child will receive a message to complete their information and sign the document.'|translate}}</div></ion-row>
+      -->
+
+      
+  
+
+      
+     
+    </ion-row>
+    <ion-row *ngIf="messagesList.length>0 && convers && convers.get('status') >= 3"><div class="infoMessTitle">{{'Summary of the trip'|translate}}</div> <div class="infoMess">{{getFinalMessage()}}</div></ion-row> 
+  </ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-item style="--highlight-height:0;" >
+    <ion-input  style="--background:lightGray; --color:black; border-radius: 5px; overflow: hidden;" [(ngModel)]="newMessage"></ion-input>
+    <ion-button slot="end" fill="clear" color="medium" (click)="sendMessage(newMessage)"><ion-icon name="send" slot="icon-only"></ion-icon></ion-button>
+  </ion-item>
+</ion-footer>

@@ -1,0 +1,33 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="selUser" class="ion-text-wrap"><span  class="userName ion-text-wrap">{{selUser.get('name')}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-avatar class="userImg">
+    <img src="/assets/userPlaceholder.png" style="object-fit: scale-down;max-width: 80%;">
+  </ion-avatar>
+
+  <ion-grid>
+    <ion-row><ion-col>{{'Lives in'|translate}}:<br><span *ngIf="addressList.length>0"> {{addressList[0].city}}</span></ion-col><ion-col *ngIf="selUser">{{'Age'|translate}}:{{calculateAge(selUser.get('bdate'))}}</ion-col></ion-row>
+    <ion-row><ion-col>{{'Children'|translate}}:<br><span *ngFor="let c of childList"> {{c.name}}, {{'age'|translate}}:{{calculateAge(c.date)}}  <br></span></ion-col><ion-col>{{'Car'|translate}}: <br><span>{{car.make}} {{car.model}}</span></ion-col></ion-row>
+  </ion-grid>
+
+  <div class="title">{{'Memberships'|translate}}</div>
+<ion-list class="myList">
+  <ion-item *ngFor="let c of clubsList" class="clubCard" detail="true" [routerLink]="['/club-details', c]">
+    <ion-thumbnail slot="start" class="clubImg">
+      <ion-img [src]="displayService.getHeaderImageForType(c.get('type'))"></ion-img>
+    </ion-thumbnail>
+    <ion-label class="ion-text-wrap"><h2>{{c.get("name")}}</h2>
+   <h3> {{c.get("category")}}</h3>
+    <p> {{c.get("address")}}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+</ion-content>

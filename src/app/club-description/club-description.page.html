@@ -1,0 +1,14 @@
+<ion-content >
+
+  <ion-button fill="clear" (click)='close();'> {{'Close' | translate}}</ion-button>
+<div class="ion-padding">
+  <ion-label class="ion-text-wrap"><h2>{{selAcademia.get("name")}}</h2>
+    <h3> {{selAcademia.get("category")}}</h3>
+     <p> {{selAcademia.get("address")}}</p>
+  </ion-label>
+
+  <div class="aDescription"> {{selAcademia.get('description')}}</div>
+
+
+</div>
+</ion-content>

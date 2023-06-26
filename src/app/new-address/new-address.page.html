@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar  mode="md" *ngIf="index>-1">
+    
+    <ion-buttons slot="secondary">
+      <ion-button *ngIf="index>-1" (click)="deleteAddress()" style="--color:#0D8C8F; text-transform: capitalize;">
+       {{'Delete'|translate}}
+       </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!editing">{{'Add Address'|translate}}</ion-title>
+    <ion-title *ngIf="index>-1">{{'Edit Address'|translate}}</ion-title> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionChange)="sugest()" (ionCancel)="clearSearch()" [(ngModel)]="searchTerm" placeholder="{{'Search'| translate}}" debounce="1000"></ion-searchbar>
+  <ion-list>
+    <ion-item  detail="false"  *ngFor="let c of sugestions" (click)="useAddress(c)">
+      <ion-icon slot="end" name="star-outline"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        <!-- <h2>{{c.address.road}} {{c.address.town}}</h2>
+        <p>{{c.address.state}} {{c.address.country}}</p> -->
+        <h2>{{c.display_name}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">{{'Address Name'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="cAddress.name">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'Street'|translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="cAddress.street">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">{{'No.'|translate}}</ion-label>
+            <ion-input type="text" [(ngModel)]="cAddress.no">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">{{'City'|translate}}</ion-label>
+              <ion-input type="text" [(ngModel)]="cAddress.city">
+              </ion-input>
+            </ion-item>
+            <!-- <ion-item>  
+              <ion-label position="stacked">Region</ion-label>
+                <ion-input type="text">
+                </ion-input>
+              </ion-item>-->
+              <ion-item> 
+                <ion-label position="stacked">{{'Postal Code'|translate}}</ion-label>
+                  <ion-input type="text" [(ngModel)]="cAddress.postalCode">
+                  </ion-input>
+                </ion-item>
+  </ion-list>
+  <div id="mapId" style="height:30%"></div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" style="background:#fff">
+  <ion-button expand="block" class="loginButton" (click)="addAddress()">{{'Save address' | translate}}</ion-button>
+</ion-footer>

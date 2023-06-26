@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar  mode="ios">
+    <ion-buttons slot="primary">
+      <ion-button   (click)="reset()" style="--color:#0D8C8F; text-transform: capitalize;">
+     {{'Delete2'|translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button   (click)="cancel()" style="--color:#0D8C8F; text-transform: capitalize;">
+     {{'Cancel'|translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <canvas style="width: 100%; height: 100%;"></canvas>
+
+  
+
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff">
+  <ion-button expand="block" class="loginButton" (click)="save()">{{'Save' | translate}}</ion-button>
+ 
+</ion-footer>

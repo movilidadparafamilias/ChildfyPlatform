@@ -1,0 +1,56 @@
+.overLay{
+
+    background-color: white;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 100%;
+}
+
+.cInput{
+
+    border: 1px solid #0D8C8F;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.special{
+    width: 100%;
+    line-height: 42px;
+    height: 42px;
+
+} 
+
+.cField{
+    --padding-start: 5px;
+    border: 1px solid #0D8C8F;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.errorText{
+    text-align: center;
+    font-size: 10px;
+    color: red;
+    width: 100%;
+}
+
+.emptyText2{
+    text-align: center;
+    font-size: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.loginButton{
+
+    --background:#0D8C8F;
+    color:#ffffff;
+   margin-bottom: 10px;
+   margin-top: 10px;
+    width: 90%;
+    height: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-transform: unset;
+}

@@ -1,0 +1,30 @@
+.userName{
+
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.clubCard{
+    --padding-start: 0;
+   
+}
+
+.newMessIcon{
+    margin-inline-end: 10px;
+    margin-inline-start: 10px;
+    font-size: 15px;
+    color: #0D8C8F;
+   
+    opacity: 0;
+}
+
+.newMessIconVisible{
+
+    opacity: 1;
+}
+.noMessText{
+
+    text-align: center;
+    color: gray;
+    margin-top:20px;
+}

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar  mode="md">
+   
+    <ion-title>{{'Edit data'|translate}}</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button   (click)="cancel()" style="--color:#0D8C8F; text-transform: capitalize;">
+      {{'Cancel'|translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">{{'Your name'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="docData.d">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'Your DNI'|translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="docData.d_DNI">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">{{'Your city'|translate}}</ion-label>
+            <ion-input type="text" [(ngModel)]="docData.d_city">
+            </ion-input>
+          </ion-item>
+         
+           
+  </ion-list>
+
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff">
+  <ion-button expand="block" class="loginButton" (click)="saveData()">{{'Save data' | translate}}</ion-button>
+ 
+</ion-footer>

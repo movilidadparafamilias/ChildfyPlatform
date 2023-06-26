@@ -1,0 +1,46 @@
+<ion-header  mode="md" class="ion-no-border ">
+
+  
+  <ion-toolbar  class="cBg2">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-wrap"><span  class="userName ion-text-wrap">{{'Archive'| translate}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="cBg2">
+  <div *ngIf="chatsList.length==0" class="noMessText">{{'You have no archived messages yet'| translate}}</div>
+  <ion-list *ngIf="chatsList.length>0"  class="cBg2">
+
+    <ion-item-sliding  *ngFor="let c of chatsList" >
+      <ion-item-options side="start">
+        <ion-item-option (click)="Archive(c)" color="danger">{{'Inbox'|translate}}</ion-item-option>
+       
+      </ion-item-options>
+  
+    <ion-item detail="true" class="clubCard" [routerLink]="['/chat-details', c]"  lines="none">
+      
+      <ion-icon slot="start" name="ellipse" class="newMessIcon " [ngClass]="{'newMessIconVisible' : c.get('unread')==true}"></ion-icon>
+      <!-- <div slot="start">
+        
+      </div> -->
+     
+      <ion-label>
+        <h2>{{getTheOther(c)}} </h2>
+        <!-- <h3>Academia 1</h3> -->
+        <p *ngIf="c.get('last')">{{c.get('last').get('content')}}</p>
+      </ion-label>
+      <!-- <ion-button slot="end" (click)="moreAction()">
+        <ion-icon name="menu" slot="icon-only"></ion-icon>
+       
+      </ion-button> -->
+    </ion-item>
+    </ion-item-sliding>
+
+   
+
+  </ion-list>
+
+
+</ion-content>

@@ -1,0 +1,99 @@
+<ion-header mode="md" class="ion-no-border ">
+  <ion-toolbar class="cBg2">
+    <ion-title><br>{{'Hello'| translate}} <br> <span class="userName" *ngIf="loggedUser">{{loggedUser.get("name")}}</span></ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button  class="addButton" (click)="addClub();">
+        <ion-icon slot="icon-only" style="color: white;" name="add"></ion-icon>
+       
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="cBg2">
+  <div class="overlay" *ngIf="showPopUp">
+  <div class="betaInfo">
+    <img src="/assets/cLogo.png" class="popUpLogo">
+    {{'Dear families! This application is a beta version developed for a pilot project in collaboration with Diputación de Malaga. Please let us know if you have any issues using the app or send your feedback, please write us at: info@childfy.app or via Whatsapp at 676 69 12 29'|translate}}
+    <ion-button expand="block"  class="loginButton" (click)="closepopup()">{{'OK' | translate}}</ion-button>
+  </div>
+
+  </div>
+
+  <div class="membership">
+    
+    <div class="title">{{'Memberships'| translate}}</div>
+    <div *ngIf="myClubs.length==0" class="emptyText">{{'No centers added yet' | translate}}</div>
+    <div *ngIf="myClubs.length==0" class="emptyText2">{{'To add a center tap on the plus sign on the right corner' | translate}}</div>
+    <ion-slides #homeSlider pager="false" [options]="slideOpts">
+      <ion-slide *ngFor="let t of myClubs"  [routerLink]="['/club-details', t]" >
+        <div class="catList ">
+  
+          <img *ngIf="t.get('image')" [src]="t.get('image').url()">
+          <img *ngIf="!t.get('image')" [src]="displayService.getHeaderImageForType(t.get('type'))">
+          <div class="clubName">{{t.get('name')}}</div>
+          <div class="clubsTrips"></div>
+        </div> 
+      </ion-slide>
+    </ion-slides>
+
+  </div>
+  <div class="tripList">
+    <div class="title">{{'Your Trips Today'| translate}}</div>
+    <div *ngIf="todayTrips.length==0" class="emptyText">{{'You have no trips today' | translate}}</div>
+    <div *ngIf="todayTrips.length==0" class="emptyText2">{{'Add a new trip by selecting a center' | translate}}</div>
+    <div class="tripCard" *ngFor="let t of todayTrips" (click)="showTripDetails(t)"  [style.background-color]="checkIfIamDriver(t) ">
+      <ion-grid class="trip-grid">
+        <ion-row>
+          <ion-col style="font-size: 12px;"> {{t.get('date') | date:'EEEE dd-MM':'':aLocale}}
+          </ion-col>
+          <ion-col size="1"></ion-col>
+          <ion-col style="font-size: 12px;">{{t.get('arrivalTime') | date:'HH:mm'}} </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{getDestName(t)}}
+          </ion-col>
+          <ion-col size="1"><ion-icon name="arrow-forward-outline"></ion-icon></ion-col>
+          <ion-col>{{getTripName(t)}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngIf="t.get('driver')" size="7" style="font-size: 12px;">{{'Driver'| translate}}:{{t.get('driver').get('name')}}
+          </ion-col>
+          <ion-col *ngIf="!t.get('driver')" size="7" style="font-size: 12px; color:red">{{'No Driver'| translate}}
+          </ion-col>
+          <ion-col size="5"><div class="seats">{{t.get('freeSeats')}} {{'seats available'|translate}}</div></ion-col>
+          <!-- <div class="price">12.4€</div> -->
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <div class="tripList">
+    <div class="title">{{'Upcoming trips'| translate}}</div>
+    <img *ngIf="upcommingTrips.length==0" src="/assets/kidgrup.png" class="emptyImg">
+    <div class="tripCard" *ngFor="let t of upcommingTrips" (click)="showTripDetails(t)"  [style.background-color]="checkIfIamDriver(t)">
+      <ion-grid class="trip-grid">
+        <ion-row>
+          <ion-col style="font-size: 12px;"> {{t.get('date') | date:'EEEE dd-MM'}}
+          </ion-col>
+          <ion-col size="1"></ion-col>
+          <ion-col style="font-size: 12px;">{{t.get('arrivalTime') | date:'HH:mm'}} </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{getDestName(t)}}
+          </ion-col>
+          <ion-col size="1"><ion-icon name="arrow-forward-outline"></ion-icon></ion-col>
+          <ion-col>{{getTripName(t)}}</ion-col>
+        </ion-row>
+        <ion-row>
+     
+          <ion-col *ngIf="t.get('driver')" size="10" style="font-size: 12px;">{{'Driver'| translate}}:{{t.get('driver').get('name')}}
+          </ion-col>
+          <ion-col *ngIf="!t.get('driver')" size="10" style="font-size: 12px; color:red">{{'No Driver'| translate}}
+          </ion-col>
+          <ion-col size="2"></ion-col>
+          <!-- <div class="price">12.4€</div> -->
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

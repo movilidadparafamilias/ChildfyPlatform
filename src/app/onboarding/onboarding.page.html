@@ -1,0 +1,134 @@
+<ion-header mode="md" class="ion-no-border ">
+  <ion-toolbar>
+    <ion-button  fill="clear" (click)="skip()">{{'Skip' | translate}}</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides #onboarding pager="false" [options]="slideOpts2" zoom>
+
+    <ion-slide >
+      <div class="mContent" *ngIf="showKid">
+        <h1>{{'Lets start by adding your children!' | translate}} </h1>
+        <p>{{'Later on you will be able to add more children under your profile section.' | translate}}</p>
+        <img  src="/assets/kid.png">
+        <ion-list>
+          <ion-item detail="false" >
+            <ion-label position="stacked">
+              <h2>{{'Name' | translate}}</h2>
+            </ion-label>
+            <ion-input [(ngModel)]="childName"></ion-input>
+          </ion-item>
+            <ion-item detail="false" >
+              <ion-label position="stacked">
+                <h2>{{'Date of birth' | translate}}</h2>
+              </ion-label>
+              <ion-datetime   class="cInput" displayFormat="DD/MM/YYYY" min="1980-01-01" max="2040-12-01" value="" [(ngModel)]="childAge"></ion-datetime>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="block"  class="loginButton" (click)="saveChildren();">{{'Save child' | translate}}</ion-button>
+      </div>
+    </ion-slide>
+    <ion-slide >
+      <div class="mContent" >
+        <div *ngIf="showAddress">
+        <h1>{{'Add your home address' | translate}}:</h1>
+        <img  src="/assets/adress.png">
+        <p>{{'To optimize the trip and route, you should include your usual address and or other addresses from which your child will be picked up. You can include one now and later, from your profile, include as many addresses or pick up points as needed.' | translate}}</p>
+        
+        <ion-searchbar (ionChange)="asugest()" (ionCancel)="clearSearch()" [(ngModel)]="searchTerm" placeholder="{{'Search'| translate}}" debounce="1000"></ion-searchbar>
+        <ion-list>
+          <ion-item  detail="false"  *ngFor="let c of sugestions" (click)="useAddress(c)">
+            <ion-icon slot="end" name="star-outline"></ion-icon>
+            <ion-label class="ion-text-wrap">
+              <!-- <h2>{{c.address.road}} {{c.address.town}}</h2>
+              <p>{{c.address.state}} {{c.address.country}}</p> -->
+              <h2>{{c.display_name}}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-list>
+          <!-- <ion-item detail="false" >
+            <ion-label position="stacked">
+              <h2>{{'Name' | translate}}</h2>
+            </ion-label>
+            <ion-input [(ngModel)]="addressName"></ion-input>
+          </ion-item> -->
+          <ion-item detail="false" >
+            <ion-label position="stacked">
+              <h2>{{'DNI' | translate}}</h2>
+            </ion-label>
+          <ion-input [(ngModel)]="mydni"></ion-input>
+        </ion-item> 
+    
+          <ion-item detail="false" >
+            <ion-label position="stacked">
+              <h2>{{'Street' | translate}}</h2>
+            </ion-label>
+            <ion-input [(ngModel)]="addressStreet"></ion-input>
+          </ion-item>
+            <ion-item detail="false" >
+              <ion-label position="stacked">
+                <h2>{{'No.' | translate}}</h2>
+              </ion-label>
+              <ion-input type="number" [(ngModel)]="addressNumber"></ion-input>
+            </ion-item>
+              <ion-item detail="false" >
+                <ion-label position="stacked">
+                  <h2>{{'City' | translate}}</h2>
+                </ion-label>
+              <ion-input [(ngModel)]="addressCity"></ion-input>
+            </ion-item>  
+            <ion-item  detail="false"> 
+              <ion-label position="stacked"> <h2>{{'Postal Code'|translate}}</h2></ion-label>
+                <ion-input type="text" [(ngModel)]="postalCode">
+                </ion-input>
+              </ion-item>    
+                
+         
+        </ion-list>
+        </div>
+        <div id="mapId" style="height:200px"></div>
+        <ion-button expand="block" class="loginButton" (click)="saveAddress()" >{{'Save address' | translate}}</ion-button>
+      </div>
+    </ion-slide>
+
+<!-- 
+    <ion-slide >
+    <div class="mContent">
+      <h1>{{'Please select a school or academia' | translate}}:</h1>
+      <p>{{'Find and select the centres based on your children preferences. Please select one now and add more centres in a later step, you will be able to include as many as you want from the centres section'| translate}}</p>
+      <ion-toolbar><ion-searchbar (ionChange)="sugest()" [(ngModel)]="searchTerm2" placeholder="{{'Search'| translate}}"></ion-searchbar></ion-toolbar>
+      <ion-list>
+        <ion-item  detail="false"  *ngFor="let c of clubList" (click)="addToFavorite(c)">
+          <ion-icon slot="end" name="star-outline"></ion-icon>
+          <ion-label>
+            <h2>{{c.get('name')}}</h2>
+            <p>{{c.get('address')}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="this.searchTerm.length == 0">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+    </ion-slide> -->
+   
+    
+  </ion-slides>
+</ion-content>
+
+
+<!-- <ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col><ion-button expand="block" color="medium" (click)="skip()">{{'Skip' | translate}}</ion-button></ion-col>
+      <ion-col><ion-button expand="block" color="medium" (click)="next()">{{'Next' | translate}}</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer> -->
+

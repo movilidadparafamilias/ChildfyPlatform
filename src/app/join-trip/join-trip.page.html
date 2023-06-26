@@ -1,0 +1,41 @@
+<ion-header mode="md" class="ion-no-border ">
+  <ion-toolbar class="cBg2">
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="overLay">
+    <ion-grid>
+      <ion-row>  <ion-col  style="text-align: right;">
+        <ion-button fill="clear" (click)="closePage()" ><ion-icon name="close" slot="icon-only"></ion-icon></ion-button>
+      </ion-col></ion-row>
+     <ion-row>
+       <ion-col > <ion-title>{{'Join Trip' | translate}}</ion-title>
+       </ion-col>
+     
+     </ion-row>
+    </ion-grid>
+
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label position="stacked">{{"I need a seat for" | translate}}</ion-label>
+        <!-- <ion-input class="cInput" ></ion-input> -->
+        <ion-select class="cInput"  interface="popover" placeholder="Select One" [(ngModel)]="requestData.cInd">
+          <ion-select-option *ngFor="let a of myChildrens; let i=index" value="{{i}}" >{{a.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+        <ion-item lines="none">
+          <ion-label position="stacked">{{"From" | translate}}</ion-label>
+          <!-- <ion-input class="cInput" ></ion-input> -->
+          <ion-select class="cInput"  interface="popover" placeholder="Select One" [(ngModel)]="requestData.addInd">
+            <ion-select-option *ngFor="let a of myAdrresses; let i=index" value="{{i}}">{{a.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+       
+     
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff"> <ion-button expand="block" class="loginButton" (click)="saveRequest()">{{'Request seat' | translate}}</ion-button></ion-footer>

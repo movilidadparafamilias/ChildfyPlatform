@@ -1,0 +1,46 @@
+.userName{
+
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.clubCard{
+
+    margin-bottom: 20px;
+    --padding-start: 0;
+   
+}
+
+.clubImg{
+    height: 110px;
+    width: 80px;
+    margin-top: 0;
+    margin-bottom: 0;
+    object-fit: cover;
+}
+
+.myList{
+
+    max-width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.loginButton{
+
+    --background:#0D8C8F;
+    color:#ffffff;
+   margin-bottom: 10px;
+    width: 90%;
+    height: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-transform: unset;
+}
+
+.emptyText{
+
+    text-align: center;
+    font-size: 10px;
+    color: gray;
+}

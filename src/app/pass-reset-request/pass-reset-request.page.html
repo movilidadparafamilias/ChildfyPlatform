@@ -1,0 +1,29 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>passResetRequest</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content class="cBg">
+
+  <div class="loginTitle">{{'Reset Password' | translate}}</div>
+  <div class="subTitle"> {{'To reset your password please input the email you registered with'|translate}}</div>
+  <ion-input [(ngModel)]="email" placeholder="{{'Email' | translate}}" class="loginField"></ion-input>
+  <!-- <ion-input type="password" [(ngModel)]="loginData.password"  placeholder="{{'Password' | translate}}" class="loginField"></ion-input> -->
+  <div class="link1">
+  
+
+  <!-- <a [routerLink]="['/signup']">{{'Reset Password' | translate}}</a> -->
+ 
+  </div>
+    <ion-button expand="block" class="loginButton"  (click)="sendResetRequest()">{{'RESET' | translate}}</ion-button>
+    <div class="link1">
+  
+    <a [routerLink]="['/login']">{{'Login' | translate}}</a>
+   
+    </div>
+
+
+</ion-content>
+

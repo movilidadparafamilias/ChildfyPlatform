@@ -1,0 +1,26 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>{{'Home'|translate}}</ion-label>
+    </ion-tab-button> 
+
+    <ion-tab-button tab="messages">
+      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+      <ion-label>{{'Messages'|translate}}</ion-label>
+      <ion-badge *ngIf="classReference.showBadge" color="danger"> </ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="clubs">
+      <ion-icon name="book-outline"></ion-icon>
+      <ion-label>{{'Clubs'|translate}}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>{{'Profile'|translate}}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

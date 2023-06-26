@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar  mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button  *ngIf="showMap == false" (click)="goMap()" style="--color:#0D8C8F; text-transform: capitalize;">
+      {{'Show map'|translate}}
+      </ion-button>
+      <ion-button *ngIf="showMap == true" (click)="goMap()" style="--color:#0D8C8F; text-transform: capitalize;">
+        {{'Show List'|translate}}
+        </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button  *ngIf="selTrip && !checkIfIamDriver()" (click)="deleteTrip()" style="--color:#0D8C8F; text-transform: capitalize;">
+      {{'Delete'|translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title *ngIf="academia" class="ion-text-wrap"><span  class="userName ion-text-wrap">{{'Trip to'|translate}} {{academia.get('name')}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item class="driverLine" detail [routerLink]="['/user-details', driver]">
+<ion-label *ngIf="driver" class="ion-text-wrap">{{'Driver'|translate}}: {{driver.get('name')}}</ion-label>
+</ion-item>
+  
+
+  <div class="list" style="height:100%" *ngIf="showMap ==false">
+    <ion-list>
+      <ion-item *ngFor="let s of tripStops">
+        <ion-grid>
+            <ion-row><ion-col size="2">{{calculateDeparture(s)}}</ion-col> <ion-col size="1" class="tripCol"><div class="circle"></div><div class="line"></div></ion-col><ion-col size="9" *ngIf="s.address.street">  {{s.address.street}}</ion-col> <ion-col size="9" *ngIf="!s.address.street">  {{s.address.myAddresses.street}}</ion-col></ion-row>
+        </ion-grid>
+      
+      </ion-item> 
+
+      <ion-item  *ngIf="tripStops.length>0">
+        <ion-grid>
+          <ion-row><ion-col size="2">{{selTrip.get('arrivalTime') | date:'HH:mm'}}</ion-col> <ion-col size="1" class="tripCol"><div class="circle"></div></ion-col><ion-col size="9">  {{academia.get('name')}}</ion-col></ion-row>
+      </ion-grid>
+        
+
+      </ion-item> 
+      
+    </ion-list>
+   
+  </div>
+  
+    <div class="map" style="height:100%"  [style.display]="showMap ? 'block' : 'none'">
+      <div id="mapId" style="height:100%"></div>  
+    </div>
+
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff">
+  <div class="avSeats" *ngIf="selTrip">{{'Available seats' | translate}}: {{selTrip.get('freeSeats')}}</div>
+  <ion-button expand="block" class="loginButton" (click)="joinThisTrip()" *ngIf="selTrip && !checkIfIamIn()">{{'Request a seat' | translate}}</ion-button>
+  <ion-button expand="block" class="loginButton" (click)="leaveThisTrip()" *ngIf="selTrip && checkIfIamIn() && checkIfIamDriver()">{{'Leave this trip' | translate}}</ion-button>
+  <ion-button expand="block" class="loginButton" (click)="startTrip()" *ngIf="selTrip && !checkIfIamDriver() && tripStatus==0">{{'Start this trip' | translate}}</ion-button>
+  <ion-button expand="block" class="loginButton" (click)="endTrip()" *ngIf="selTrip && !checkIfIamDriver()  && tripStatus==1">{{'End this trip' | translate}}</ion-button>
+</ion-footer>

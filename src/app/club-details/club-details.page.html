@@ -1,0 +1,74 @@
+<ion-header  mode="md" class="ion-no-border ">
+ 
+    <ion-toolbar  mode="md">
+      <ion-buttons slot="start">
+        <ion-back-button mode="md"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar mode="md">
+      
+    <ion-title *ngIf="selAcademia" class="ion-text-wrap" mode="md"><span  class="userName ion-text-wrap">{{selAcademia.get('name')}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="mainImgHolder" *ngIf="selAcademia"> 
+    <ion-img *ngIf="selAcademia.get('image')" [src]="selAcademia.get('image').url()"></ion-img>
+    <ion-img *ngIf="!selAcademia.get('image')" [src]="displayService.getHeaderImageForType(selAcademia.get('type'))"></ion-img>
+    </div>
+  <ion-grid class="buttonsGrid">
+    <ion-row>
+      <ion-col class="buttonCol" (click)="showInfo()">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-col>
+      <ion-col class="buttonCol" (click)="openMapsApp();">
+        <ion-icon name="location-outline"></ion-icon>
+      </ion-col>
+      <ion-col class="buttonCol" (click)="callNo();">
+        <ion-icon name="call-outline"></ion-icon>
+      </ion-col>
+      <ion-col class="buttonCol" (click)="saveFavorite()">
+        <ion-icon *ngIf="!showAdd" name="star"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-label>{{'Trips'| translate}}</ion-label>
+  </ion-item>
+      <ion-item>
+        <ion-label>{{'Show trips from my neighbourhood'| translate}}</ion-label>
+        <ion-toggle [(ngModel)]="nearby" (ionChange)="geoLocate()"></ion-toggle>
+      </ion-item>
+      <div class="tripCard" *ngFor="let t of tripList"  (click)="showTripDetails(t)"  [style.background-color]="getColor(t)">
+        <ion-grid class="trip-grid">
+          <ion-row>
+            <ion-col style="font-size: 12px;">{{t.get('date') | date:'EEEE dd-MM':'':aLocale}}
+            </ion-col>
+            <ion-col size="1"></ion-col>
+            <ion-col style="font-size: 12px;">{{t.get('arrivalTime') | date:'HH:mm'}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>{{getDestName(t)}}
+            </ion-col>
+            <ion-col size="1"><ion-icon name="arrow-forward-outline"></ion-icon></ion-col>
+            <ion-col>{{getTripName(t)}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col *ngIf="t.get('driver')" size="7" style="font-size: 12px;">{{'Driver'| translate}}:{{t.get('driver').get('name')}}
+            </ion-col>
+            <ion-col *ngIf="!t.get('driver')" size="7" style="font-size: 12px; color:red">{{'No Driver'| translate}}
+            </ion-col>
+            <ion-col size="5"><div class="seats" *ngIf="t.get('freeSeats')">{{t.get('freeSeats')}} {{'seats available'|translate}}</div></ion-col>
+            <!-- <div class="price">12.4€</div> -->
+            
+          </ion-row>
+        </ion-grid>
+      </div>
+
+        <div class="emptyMess" *ngIf="tripList.length == 0">{{'There are no trips available yet. If you are travelling to this centre please share or request a trip to support other families within your community.'|translate}}</div>
+
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff">
+  <ion-button expand="block" class="loginButton" (click)="addTrip()">{{'Add trip for this club' | translate}}</ion-button>
+</ion-footer>

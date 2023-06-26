@@ -1,0 +1,20 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-wrap"><span  class="userName ion-text-wrap">{{'My Children' | translate}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let c of childrenList; let ind = index;"  [routerLink]="['/new-children', {id:ind}]" detail>
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label>{{c.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff">
+  <ion-button expand="block" class="loginButton" (click)="addChildren()">{{'Add children' | translate}}</ion-button>
+</ion-footer>

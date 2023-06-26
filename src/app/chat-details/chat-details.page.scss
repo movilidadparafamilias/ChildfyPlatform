@@ -1,0 +1,88 @@
+.userName{
+
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.textMessage{
+
+    background-color: white;
+    font-size: 14px!important;
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.textMessage1{
+    background-color: white;
+    font-size: 14px!important;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: fit-content;
+
+}
+
+.infoMess{
+    font-size: 12px;
+    color: gray;
+    padding: 5px;
+}
+
+.MoveRight{
+
+    margin-left: auto;
+}
+
+.MoveRight2{
+
+    margin-left: auto;
+    text-align: right;
+}
+
+.docIcon{
+
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.requestCard{
+
+  
+}
+.sender{
+    font-size: 12px;
+    padding: 5px;
+} 
+
+
+.refuseButton{
+    --background:#FF907A;
+    color:#ffffff;
+   margin-bottom: 10px;
+    width: 90%;
+   
+    margin-left: 5%;
+    margin-right: 5%;
+    text-transform: unset;
+    
+}
+
+.infoMessTitle{
+    font-size: 12px;
+    color: gray;
+    font-weight: bold;
+}
+
+.aprovingBut{
+    --background:#0D8C8F;
+    color:#ffffff;
+   margin-bottom: 10px;
+    width: 90%;
+   
+    margin-left: 5%;
+    margin-right: 5%;
+    text-transform: unset;
+
+}

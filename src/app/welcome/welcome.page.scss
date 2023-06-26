@@ -1,0 +1,30 @@
+.cbottomImage{
+     max-width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.upperSlider{
+
+    height: 240px;
+    --bullet-background:white;
+    --bullet-background-active:white;
+}
+
+.loginButton{
+
+    --background:#ffffff;
+    color:#0D8C8F;
+    position: fixed;
+    bottom: 20px;
+    width: 90%;
+    height: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.slideText{
+
+    font-size: 18px;
+    color: #ffffff;
+}

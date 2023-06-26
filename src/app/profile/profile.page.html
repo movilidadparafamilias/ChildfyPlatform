@@ -1,0 +1,77 @@
+<ion-header mode="md" class="ion-no-border ">
+  <ion-toolbar  class="cBg2">
+ 
+    <ion-title><span  class="userName">{{'Profile' | translate}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="cBg2">
+<ion-grid>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="5">
+  <ion-avatar class="userImg">
+    <img src="/assets/userPlaceholder.png" style="object-fit: scale-down;max-width: 80%;">
+  </ion-avatar>
+</ion-col>
+<ion-col size="7">
+  <div class="myName">{{myName}}</div>
+  <div class="myEmail">{{myEmail}}</div>
+</ion-col>
+</ion-row>
+</ion-grid>
+  <ion-list  class="myList">
+
+    <ion-item [routerLink]="['/myaddresses']">
+      <ion-icon name="location-outline" slot="start"></ion-icon>
+      <ion-label>{{'My Addresses'|translate}}</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/myclubs']"> 
+      <ion-icon name="book-outline" slot="start"></ion-icon>
+      <ion-label>{{'My Clubs'|translate}}</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/mychildren']">
+      <ion-icon name="people-outline" slot="start"></ion-icon>
+      <ion-label>{{'My Children'|translate}}</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/my-car']">
+      <ion-icon name="car-sport-outline" slot="start"></ion-icon>
+      <ion-label>{{'My car'|translate}}</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/myprofile']">
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label>{{'My profile'|translate}}</ion-label>
+    </ion-item>
+
+    <!-- <ion-item [routerLink]="['/mypayment']">
+      <ion-icon name="card-outline" slot="start"></ion-icon>
+      <ion-label>{{'Payment Methods'|translate}}</ion-label>
+    </ion-item> -->
+
+ 
+
+   
+    <ion-item [routerLink]="['/help']">
+      <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
+      <ion-label>{{'Help'|translate}}</ion-label>
+    </ion-item>
+    <ion-item [routerLink]="['/about']">
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      <ion-label>{{'About'|translate}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="deleteAccount();">
+      <ion-icon name="trash-outline" slot="start"></ion-icon>
+      <ion-label>{{'Delete account'|translate}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="logout();">
+      <ion-icon name="log-out-outline" slot="start" ></ion-icon>
+      <ion-label>{{'LogOut'|translate}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <div style="width:100%; text-align: center;">v0.1.19</div>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar  mode="md" *ngIf="index>-1" >
+    
+    <ion-buttons slot="secondary">
+      <ion-button *ngIf="index>-1" (click)="deleteKid()" style="--color:#0D8C8F; text-transform: capitalize;">
+       {{'Delete'|translate}}
+       </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!editing">{{'Add Children'|translate}}</ion-title>
+    <ion-title *ngIf="editing">{{'Edit Children'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-avatar class="userImg">
+    <img src="/assets/userPlaceholder.png" style="object-fit: scale-down;max-width: 80%;">
+  </ion-avatar>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">{{'Name'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="cChild.name">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'Date of birth'|translate}}</ion-label>
+        <ion-datetime   class="cInput" displayFormat="DD/MM/YYYY" min="1980-01-01" max="2040-12-01" value="" [(ngModel)]="cChild.date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'Needs child seat'| translate}}</ion-label>
+          <ion-toggle [(ngModel)]="cChild.silita" ></ion-toggle>
+        </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff">
+  <ion-button expand="block" class="loginButton" (click)="addChildren()">{{'Save children' | translate}}</ion-button>
+</ion-footer>

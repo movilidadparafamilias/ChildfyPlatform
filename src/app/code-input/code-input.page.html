@@ -1,0 +1,44 @@
+
+
+<ion-content class="cBg">
+
+  <!-- <img src="/assets/okSign.png" class="okImg"> -->
+
+<!--   
+  <div class="signupTitle">{{'Account created!'|translate}}</div>
+
+  <div class="signupText">{{'We’re taking safety seriously, please stand by while we’re validating your profile.'|translate}} <br>
+
+   {{'You will be notified once it’s approved!'|translate}}</div> -->
+
+   <div class="infoTextTitle ion-text-center">{{'Email verification'|translate}}</div>
+
+   <div class="infoText">{{'We sent you an email with a verification code. Please enter the code below.'|translate}}</div>
+
+ <ion-input  (ionChange)="pinUpdate($event)" #autofocus [(ngModel)]="pinCode" style="width: 100px; height: 0; position: absolute;top:-100px;"  type="number"  placeholder="" class="ion-text-align-center"></ion-input>
+
+ 
+<ion-grid (click)="goFocus()">
+  <div class="pinRow">
+    <!-- <ion-icon class="pinNo" [name]="icon1"></ion-icon>
+    <ion-icon class="pinNo" [name]="icon2"></ion-icon>
+    <ion-icon class="pinNo" [name]="icon3"></ion-icon>
+    <ion-icon class="pinNo" [name]="icon4"></ion-icon> -->
+    <ion-row class="ion-align-items-center">
+      <ion-col><div class="cDisplay">{{c1}}</div></ion-col>
+      <ion-col><div class="cDisplay" >{{c2}}</div></ion-col>
+      <ion-col><div class="cDisplay" >{{c3}}</div></ion-col>
+      <ion-col><div class="cDisplay">{{c4}}</div></ion-col>
+    
+    </ion-row>
+    <!-- <ion-icon class="pinNo" [name]="icon5"></ion-icon>
+    <ion-icon class="pinNo" [name]="icon6"></ion-icon> -->
+  </div>
+
+</ion-grid>
+<div class="errorDisplay" *ngIf="showError">{{'The code you entered is wrong! Try again!'|translate}}</div>
+
+<div class="resendBut" (click)="resendAction()">{{'resend'|translate}}</div>
+
+
+</ion-content>

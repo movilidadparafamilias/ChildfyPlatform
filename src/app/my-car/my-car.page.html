@@ -1,0 +1,58 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-wrap"><span  class="userName ion-text-wrap">{{'My car'| translate}}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+<ion-avatar class="userImg">
+  <!-- <img src="/assets/userPlaceholder.png" style="object-fit: scale-down;max-width: 80%;"> -->
+  <ion-icon name="car-sport-outline" style=" font-size: 50px; height: 100%; color: #0D8C8F;"></ion-icon>
+</ion-avatar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">{{'Make'|translate}}</ion-label>
+      <ion-input type="text" [(ngModel)]="car.make">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">{{'Model'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="car.model">
+        </ion-input>
+      </ion-item>
+
+    <ion-item >
+      <ion-label position="stacked">{{'Year'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="car.year">
+        </ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label position="stacked">{{'Plate no.'|translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="car.reg">
+          </ion-input>
+        </ion-item>
+
+      <ion-item >
+        <ion-label position="stacked">{{'Color'|translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="car.color">
+          </ion-input>
+        </ion-item>
+
+      
+
+
+</ion-list>
+
+</ion-content>
+
+
+<ion-footer class="ion-no-border" style="background:#fff">
+  <ion-button expand="block" class="loginButton" (click)="saveProfile()">{{'Update car' | translate}}</ion-button>
+</ion-footer>

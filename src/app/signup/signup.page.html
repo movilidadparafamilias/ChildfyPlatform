@@ -1,0 +1,92 @@
+
+
+<ion-content class="cBg">
+
+
+  <div class="signupTitle">{{'Lets meet each other!'|translate}}</div>
+
+  <div class="signupText">{{'I’m Juan, I live in Madrid and I have two children. I started Childfy because I could nevet sync with my neighbour to take our kids to school!'|translate}}</div>
+
+  <div class="signupText">{{'You are:'|translate}}</div>
+
+  <ion-list class="signUpList" style="background:rgba(0,0,0,0)">
+    <ion-item detail="false" style="--background:rgba(0,0,0,0)" lines="none">
+<!--       
+      <ion-label position="stacked">
+        <h1>{{'Name' | translate}}</h1>
+       
+      </ion-label> -->
+      <ion-input [(ngModel)]="userData.name" class="loginField" placeholder="{{'Name' | translate}}"  style=" --padding-start:4px;"></ion-input>
+    </ion-item>
+    <!-- <ion-item detail="false" >
+      
+      <ion-label position="stacked">
+        <h1>Phone no.</h1>
+       
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item> -->
+    <ion-item detail="false"  style="--background:rgba(0,0,0,0)" lines="none">
+      
+      <!-- <ion-label position="stacked">
+        <h1>{{'Email' | translate}}</h1>
+       
+      </ion-label> -->
+      <ion-input [(ngModel)]="userData.email" type="email"  class="loginField" placeholder="{{'Email' | translate}}" style=" --padding-start:4px;"></ion-input>
+    </ion-item>
+    <ion-item detail="false" style="--background:rgba(0,0,0,0)" lines="none">
+      
+      <!-- <ion-label position="stacked" >
+        <h1>{{'Password' | translate}}</h1>
+       
+      </ion-label> -->
+      <ion-input type="password" [(ngModel)]="userData.password"  class="loginField" placeholder="{{'Password' | translate}}" style=" --padding-start:4px;"></ion-input>
+    </ion-item>
+    <ion-item detail="false" style="--background:rgba(0,0,0,0)" lines="none">
+      
+      <!-- <ion-label position="stacked">
+        <h1>{{'Repeat password' | translate}}</h1>
+       
+      </ion-label> -->
+      <ion-input type="password" [(ngModel)]="userData.rePassword"  class="loginField" placeholder="{{'Repeat password' | translate}}" style=" --padding-start:4px;"></ion-input>
+    </ion-item>
+    <div class="pLink"> <a target="_blank" href="https://movilidadparafamilias.com/politicadeprivacidad.html">Política de Privacidad</a></div>
+    <div class="pLink"> <a target="_blank" href="https://movilidadparafamilias.com/avisolegal.html">Aviso Legal</a></div>
+    <ion-item detail="false" lines="none" style="--background:rgba(0,0,0,0)">
+
+      <ion-checkbox slot="start" [(ngModel)]="userData.isChecked_aviso"></ion-checkbox>
+      <ion-label class="policyField ion-text-wrap"><p class="policyField"> He leído y acepto el Aviso Legal</p></ion-label>
+   
+
+     
+    </ion-item>
+   
+    <ion-item detail="false" lines="none" style="--background:rgba(0,0,0,0)">
+
+      <ion-checkbox slot="start" [(ngModel)]="userData.isChecked"></ion-checkbox>
+      <ion-label class="policyField ion-text-wrap"><p class="policyField"> He leído y acepto la Política de Privacidad</p></ion-label>
+   
+
+     
+    </ion-item>
+ 
+    <ion-button expand="block"  class="loginButton" (click)="signup()">{{'JOIN' | translate}}</ion-button>
+    <ion-grid >
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="link1"><a [routerLink]="['/login']">{{'I already have an account' | translate}}</a></ion-col>
+       
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="gdpr">
+          Protección de datos<br>
+        
+          El responsable del tratamiento es SOLUCIONES DE MOVILIDAD PARA FAMILIAS SL. La finalidad de la recogida de datos es la de poder atender sus cuestiones, sin ceder sus datos a terceros. Tiene derecho a saber qué información tenemos sobre usted, corregirla o eliminarla tal y como se explica en nuestra Política de Privacidad.
+        
+        </div></ion-col>
+      
+        </ion-row>
+    </ion-grid>
+  </ion-list>
+
+</ion-content>

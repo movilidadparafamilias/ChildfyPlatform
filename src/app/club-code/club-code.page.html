@@ -1,0 +1,39 @@
+<ion-header mode="md" class="ion-no-border ">
+  <ion-toolbar class="cBg2">
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="overLay">
+    <ion-grid>
+      <ion-row>
+        <ion-col  style="text-align: right;">
+          <ion-button fill="clear" (click)="closePage()" style="color: #0D8C8F;"><ion-icon name="close" slot="icon-only"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+     <ion-row>
+       <ion-col > <ion-title>{{'Add club' | translate}}</ion-title>
+       </ion-col>
+       </ion-row>
+ 
+    </ion-grid>
+
+    <div  class="emptyText2">{{"Enter here the code you have received from your school or club." | translate}}</div>
+    <div  class="emptyText2">{{"If you don't have a code please get in contact with your club and ask them to provide one." | translate}}</div>
+
+    <ion-list>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">{{"Club Code" | translate}}</ion-label>
+        <ion-input class="cField" placeholder="XXXXXX" [(ngModel)]="cCode"></ion-input>
+        <div class="errorText" *ngIf="showError">{{"Looks like there is an error! Please check the code." | translate}}</div>
+      </ion-item>
+  
+       
+     
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border" style="background:#fff"> <ion-button expand="block" class="loginButton" (click)="saveRequest()">{{'Add club' | translate}}</ion-button></ion-footer>

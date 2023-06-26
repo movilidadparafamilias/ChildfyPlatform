@@ -1,0 +1,59 @@
+<ion-header >
+  <ion-toolbar  mode="ios">
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="convers.get('status')<3"   (click)="save()" style="--color:#0D8C8F; text-transform: capitalize;">
+     {{'Save'|translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button   (click)="cancel()" style="--color:#0D8C8F; text-transform: capitalize;">
+     {{'Cancel'|translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<div *ngIf="ready">
+ <div class="title"> Autorización para participar en la actividad del proyecto Childfy</div>
+<br>
+De conformidad con la normativa acerca de la patria potestad de los menores de edad, mediante la presente, Doña/Don <b> {{docData.u1}} </b>, mayor de edad, con DNI/NIE <b>{{docData.u1_DNI}}</b>, y con domicilio en: <b>{{docData.u1_address.city}}</b> en calidad de madre/padre
+<br>
+<b>AUTORIZO</b> a mi hijo/a, <b>{{docData.c}}</b>, menor de edad, nacida el <b>{{docData.cBdate | date:'dd-MM-yyyy'}}</b> , con DNI/NIF <b>{{docData.cDni}}</b> a realizar un trayecto caminando acompañado/a por Doña/Don <b>{{docData.d}}</b>, mayor de edad, con DNI/NIF <b>{{docData.d_DNI}}</b>, y con domicilio en: <b>{{docData.d_city}}</b> en calidad de acompañante.
+<br>
+A tales efectos, asumo toda la responsabilidad que se derive de la participación de mi hijo/a, <b>{{docData.c}}</b>, en el acto anteriormente citado.
+<br>
+Esta autorización tendrá vigencia a partir de la fecha de firma indicada a continuación.
+
+<br>
+<br>
+
+Fdo.
+<br>
+DNI:{{docData.u1_DNI}}
+<br>
+Fecha: {{docData.today | date:'dd-MM-yyyy'}}
+
+<br>
+
+<ion-grid><ion-row>
+  
+  <ion-col><img src="{{signatureImage}}"></ion-col>
+      <ion-col><img src="{{DriverSignatureImage}}"></ion-col>
+</ion-row></ion-grid>
+<span style="font-size: 11px;">
+En cumplimiento del Reglamento General de Protección de Datos (en adelante, RGPD) y en la Ley Orgánica 3/2018, le informamos de modo expreso, preciso e inequívoco que los datos facilitados por usted, tanto suyos como de su hijo/a serán incorporados y tratados en los ficheros responsabilidad de SOLUCIONES DE MOVILIDAD PARA FAMILIAS SL, con la finalidad de la gestión y prestación de servicios derivada de la misma, incluyendo el envío de comunicaciones y circulares informativas de interés para el cliente.
+
+El titular de los datos se compromete a comunicar cualquier modificación que se produzca en los datos. Sus datos serán cedidos en aquellos casos en que sea necesario para el desarrollo y control de la prestación del servicio o en los supuestos en que lo autorice una norma con rango de ley. Sus datos serán conservados el tiempo estrictamente necesario.
+
+Podrá ejercer los derechos contemplados en los artículos 15 a 22 RGPD, tanto en su nombre como en el de su hijo/a escribiendo un correo a info@childfy.app, adjuntando copia de DNI. Si considera que el tratamiento vulnera la normativa puede presentar una reclamación ante la Agencia Española de Protección de Datos.
+</span>
+
+</div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" style="background:#fff" *ngIf="convers.get('status')<3">
+  <ion-button expand="block" class="loginButton" (click)="editData()">{{'Edit' | translate}}</ion-button>
+  <ion-button expand="block" class="loginButton" (click)="sign()">{{'Sign' | translate}}</ion-button>
+</ion-footer>
