@@ -14,12 +14,19 @@ Childfy is a platform that helps parents share trips to and from schools making 
 
 ##### Mobile app
 Mobile app is built on top of Ionic Framework to build the app make sure you have [Node.js](https://nodejs.org/en "Node.js") installed.
+
 Install Ionic:
+
 `npm i -g @ionic/cli`
+
 Clone this repository
+
 `gh repo clone movilidadparafamilias/ChildfyPlatform`
+
 `cd ChildfyPlatform`
+
 and run
+
 `npm i`
 
 The native versions of the app are using [Capacitor](https://capacitorjs.com/ "Capacitor") and to build them run:
